@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <title>Мој Преглед</title>
+</head>
+
+<body>
+  <div class="search-wrapper"> <!-- entire app -->
+    <input type="search" placeholder="Внеси доктор или апарат" class="input"> <!-- search bar -->
+    <div class="card-container"> <!--place for all the cards -->
+      <template class="card-template"> <!-- card template -->
+        <div class="card" onclick="clickCard(this)">
+          <div class="ime"></div>
+          <div class="specijalnost"></div>
+          <div class="ustanova"></div>
+          <div class="lokacija"></div>
+          <div class="termini hide">
+            <div class="loading"></div>
+          </div>
+          <div class="should-refresh hide">yes</div>
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>

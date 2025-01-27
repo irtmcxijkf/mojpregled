@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chunking</title>
+</head>
+
+<body>
+  <div class="target"></div>
+  <script>
+    const DIV_TARGET = document.querySelector('.target')
+    const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+    // // Chunking fetched data and one time rendering
+    // function fetching() {
+    //     return fetch('../json/specijalisti.json').then(res => res.json()).then(data => data).catch(err => err)
+    // }
+
+    // async function chunking1() {
+    //     let data = await fetching()
+    //     function chunking(arr, key, length, chunkSize) {
+    //         let arrOnlyOneKey = []
+    //         let arrChunked = []
+    //         for (i = 0; i < length && i < arr.length; i++) {
+    //             arrOnlyOneKey.push(arr[i][key])
+    //         }
+    //         for (i = 0; i < arrOnlyOneKey.length; i += chunkSize) {
+    //             arrChunked.push(arrOnlyOneKey.slice(i, i + chunkSize))
+    //             arrChunked.push('<br><br>')
+    //         }
+    //         return arrChunked;
+    //     }
+    //     let chunked = chunking(data, 'ime', 10, 3)
+    //     DIV_TARGET.innerHTML = chunked
+    // }
+    // chunking1()
+
+
+    // // Chunking simple array and one time rendering
+    // function chunking2(arr, chunkSize) {
+    //     let arrChunked = []
+    //     function doChunk() {
+    //         for (i = 0; i < arr.length; i += chunkSize) {
+    //             arrChunked.push(data.slice(i, i + chunkSize))
+    //             arrChunked.push('<br><br>')
+    //         }
+    //         DIV_TARGET.innerHTML = arrChunked
+    //     }
+    //     doChunk()
+    // }
+    // chunking2(data, 5)
+
+
+    // // Chunking simple array and rendering one chunk at a time
+    // function chunking(arr, chunkSize) {
+    //     let arrChunked = []
+    //     let index = 0
+    //     function doChunk() {
+    //         if (index >= arr.length) {
+    //             DIV_TARGET.innerHTML = 'end'
+    //             clearInterval(interval)
+    //             return;
+    //         }
+    //         else {
+    //             let chunk = data.slice(index, index + chunkSize)
+    //             DIV_TARGET.innerHTML = chunk + '<br><br>'
+    //             index += chunkSize
+    //         }
+    //     }
+    //     let interval = setInterval(doChunk, 1000)
+    // }
+    // chunking(data, 3)
+
+    // Processing of each element in a simple array, in chunks
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+    function chunkProcessing(arr, chunkSize) {
+      let index = 0
+      function doChunk() {
+        let chunkCounter = chunkSize
+        while (chunkCounter-- && index < arr.length) {
+          console.log(arr[index]);
+          index++
+        }
+        if (index < arr.length) {
+          setTimeout(doChunk, 1000)
+        }
+      }
+      doChunk()
+    }
+    chunkProcessing(arr, 3)
+
+  </script>
+</body>
+
+</html>
